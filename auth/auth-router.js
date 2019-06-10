@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
-const Users = require('../users/userRouter.js');
+const Users = require('../users/user-model.js');
 
 
 router.post('/register', (req, res) => {
@@ -31,4 +31,7 @@ router.post('/login', (req, res) => {
                 res.status(401).json({ message: 'Invalid Credientials'})
             }
         })
-})
+});
+
+
+module.exports = router;

@@ -4,6 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/toddmckenzie/webauth-i-challenge.git",
   "license": "MIT",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
