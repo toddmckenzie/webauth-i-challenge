@@ -53,5 +53,5 @@ module.exports = router;
 
 
 ///route api/login
-///api/logut
+///api/logout
 ///api/users

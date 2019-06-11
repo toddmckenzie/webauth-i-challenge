@@ -4,7 +4,7 @@ const cors = require('cors');
 const session = require('express-session')
 const userRouter = require('../users/userRouter.js');
 const authRouter = require('../auth/auth-router.js')
-
+const KnexSessionStore = require('connect-session-knex')(session);
 const server = express();
 
 const sessionConfig = {
@@ -17,6 +17,14 @@ const sessionConfig = {
     },
     resave: false,
     saveUninitialized: false, //GDPR compliance laws against setting cookies automatically.  Should only be true in users allows it.
+    store: new KnexSessionStore({
+        knex: require('../database/dbConfig.js'),
+        tablename: 'sessions',
+        sidfieldname: 'sid',
+        createtable: true,
+        clearInterval: 1000 * 60 * 60,
+   
+      })
 }
 
 server.use(helmet());
