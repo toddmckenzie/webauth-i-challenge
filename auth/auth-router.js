@@ -34,5 +34,24 @@ router.post('/login', (req, res) => {
         })
 });
 
+router.get('/logout', (req, res ) => {
+    if (req.session){
+        req.session.destroy(err => {
+            if (err) {
+                res.json({ message: 'you could not be logged out.'})
+            } else {
+                res.status(200).json({ message: 'bye'})
+            }
+    }) 
+    } else {
+        res.status.json({ message: 'you were not logged in anyways'})
+    }
+})
+
 
 module.exports = router;
+
+
+///route api/login
+///api/logut
+///api/users
