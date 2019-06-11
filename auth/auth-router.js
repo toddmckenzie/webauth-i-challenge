@@ -22,9 +22,10 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     let { username, password } = req.body;
 
-    Users.findBy({ username })
+    Users.findByUsername({ username })
         .first()
         .then(user => {
+            req.session.user = user; //cookie will get sent to client.
             if (user && bcrypt.compareSync(password, user.password)) {
                 res.status(200).json({ message: `Welcome ${user.username}`})
             } else {

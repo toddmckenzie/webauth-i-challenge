@@ -3,15 +3,15 @@ const db = require('../database/dbConfig.js');
 module.exports = {
     add,
     find,
-    findBy,
+    findByUsername,
     findById
 };
 
 function find() {
-    return db('users'.select('id', 'username', 'password'));
+    return db('users').select('id', 'username', 'password');
 };
 
-function findBy(filter){
+function findByUsername(filter){
     return db('users').where(filter);
 };
 
